@@ -1,4 +1,4 @@
-// ELEMENTS 
+// ELEMENTS
 const submitButtom = document.querySelector('#submit-butoni');
 const formContainer = document.querySelector('.modal-container');
 const overlay = document.querySelector('.overlay');
@@ -12,8 +12,8 @@ const emailInput = document.querySelector('#email');
 // HIDES FORM AND OVERLAY TO REVEAL THANKYOU PAGE BELOW
 submitButtom.addEventListener('click', function(){
     console.log('working')
-    formContainer.classList.add('hide');
-    overlay.classList.add('hide');
+    // formContainer.classList.add('hide');
+    // overlay.classList.add('hide');
 })
 
 // CODE THAT CREATES A CASILLERO NUMBER BASED ON INFORMATION PROVIDED BY USER
@@ -26,15 +26,20 @@ function createCasilleroNumber(){
         const randomThreeNumbers = Math.floor(Math.random() * (89 - 10) + 10);
         return casilleroNumberInput.value = nombreFirstLetter + apellidoFirstThreeLetters + randomThreeNumbers + currentMonth + currentYear;
     }
-    
+
 }
 
 // when user presses a key while name and apellido values are not empty, then the create casillero function is called
-window.addEventListener('keydown', createCasilleroNumber);
+window.addEventListener("keydown", createCasilleroNumber, { once: true });
 
 
 
-//OMAR*************************
+
+
+
+//OMAR************************************************************************
+// !!!!   LAST UPDATED 04/05/22 11:42 PM
+
 
 const form = document.getElementById('form-element');
 
@@ -54,9 +59,17 @@ form.addEventListener("submit", function (e){
         .then(res => res.text())
         .then(data =>{
             console.log(data);
-            console.log("fetch wroked")
+            console.log("fetch wroked");
+                if(data === "false"){
+                    alert("this email is already in use!!!!!");
+                }else{
+                    alert("user registered successfully");
+                }
+
+
         })
 
 
 } )
 //OMAR*********************
+//***********************************************************************
